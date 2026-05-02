@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../components/AuthGuard";
+import AppLayout from "../layouts/AppLayout/AppLayout";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Register from "../pages/Register/Register";
+import Profiles from "../pages/Profiles/Profiles";
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -11,7 +13,19 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <AuthGuard>
-        <Dashboard />
+        <AppLayout>
+          <Dashboard />
+        </AppLayout>
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/profiles",
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Profiles />
+        </AppLayout>
       </AuthGuard>
     ),
   },
