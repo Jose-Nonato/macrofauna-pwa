@@ -21,6 +21,7 @@ export default function Sidebar({ open, setOpen }) {
   const menu = [
     { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
     { label: "Perfil", icon: User, path: "/profiles" },
+    { label: "Amostras", icon: User, path: "/create" },
   ];
 
   function go(path) {

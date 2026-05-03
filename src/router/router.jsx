@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Register from "../pages/Register/Register";
 import Profiles from "../pages/Profiles/Profiles";
+import CreateSamples from "../pages/CreateSamples/CreateSamples";
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -25,6 +26,16 @@ export const router = createBrowserRouter([
       <AuthGuard>
         <AppLayout>
           <Profiles />
+        </AppLayout>
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/create",
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <CreateSamples />
         </AppLayout>
       </AuthGuard>
     ),
