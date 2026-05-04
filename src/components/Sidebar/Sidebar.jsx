@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { LayoutDashboard, User, LogOut, X } from "lucide-react";
+import { LayoutDashboard, User, LogOut, X, Bug } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 import {
   Close,
@@ -20,8 +20,8 @@ export default function Sidebar({ open, setOpen }) {
 
   const menu = [
     { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
+    { label: "Amostras", icon: Bug, path: "/samples" },
     { label: "Perfil", icon: User, path: "/profiles" },
-    { label: "Amostras", icon: User, path: "/create" },
   ];
 
   function go(path) {

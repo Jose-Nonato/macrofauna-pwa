@@ -54,12 +54,12 @@ export const Button = styled.button`
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: #2d6a4f;
+  background: #1e293b;
   color: white;
   cursor: pointer;
 
   &:hover {
-    background: #1b4332;
+    background: #131923;
   }
 
   &:disabled {
@@ -71,7 +71,7 @@ export const Button = styled.button`
 export const Link = styled.span`
   text-align: center;
   cursor: pointer;
-  color: #2d6a4f;
+  color: #1e293b;
 
   &:hover {
     text-decoration: underline;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.aside`
-  background: #0f172a;
+  background: #14663b;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -49,12 +49,12 @@ export const Item = styled.button`
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background: ${({ active }) => (active ? "#1e293b" : "transparent")};
+  background: ${({ active }) => (active ? "#f5b109" : "transparent")};
   color: #fff;
   cursor: pointer;
 
   &:hover {
-    background: #1e293b;
+    background: #f5b109;
   }
 `;
 
@@ -67,7 +67,7 @@ export const LogoutBtn = styled.button`
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background: #ef4444;
+  background: #ef1b1b;
   color: #fff;
   cursor: pointer;
 `;

@@ -1,5 +1,27 @@
 import { supabase } from "../lib/supabase";
 
+export async function getSamples() {
+  const { data: userData } = await supabase.auth.getUser();
+  const user = userData.user;
+  const { data, error } = await supabase
+    .from("samples")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("id", { ascending: false });
+  if (error) throw error;
+  return data;
+}
+
+export async function getInsectsBySample(sampleId) {
+  const { data, error } = await supabase
+    .from("insect")
+    .select("*")
+    .eq("sample_id", sampleId);
+
+  if (error) throw error;
+  return data;
+}
+
 export async function createSample(sample) {
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
@@ -24,4 +46,20 @@ export async function insertPhotos(photos) {
   const { error } = await supabase.from("photos").insert(photos);
 
   if (error) throw error;
+}
+
+export async function updateSample(id, sample) {
+  const { data: userData } = await supabase.auth.getUser();
+  const user = userData.user;
+
+  const { data, error } = await supabase
+    .from("samples")
+    .update(sample)
+    .eq("id", id)
+    .select()
+    .eq("user_id", user.id)
+    .single();
+
+  if (error) throw error;
+  return data;
 }
