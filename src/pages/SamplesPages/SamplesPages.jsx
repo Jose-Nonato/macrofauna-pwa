@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Trash2 } from "lucide-react";
 import SampleForm from "../../components/SampleForms/SampleForms";
-import { getSamples } from "../../services/SamplesServices";
-import { card, drawer, overlay, Button } from "./styles";
+import { getSamples, deleteSample } from "../../services/SamplesServices";
+import { showError, showSuccess } from "../../utils/alert";
+import { card, drawer, overlay, Button, SampleContainer } from "./styles";
 
 export default function SamplesPage() {
   const [samples, setSamples] = useState([]);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [loadingDelete, setLoadingDelete] = useState(null);
 
   async function loadSamples() {
-    const data = await getSamples();
-    setSamples(data);
+    try {
+      const data = await getSamples();
+      setSamples(data);
+    } catch (error) {
+      showError("Erro ao carregar amostras");
+    }
   }
 
   useEffect(() => {
@@ -38,6 +44,26 @@ export default function SamplesPage() {
     loadSamples();
   }
 
+  async function handleDelete(sampleId) {
+    const confirmDelete = window.confirm(
+      "Tem certeza que deseja excluir esta amostra?",
+    );
+    if (!confirmDelete) return;
+
+    try {
+      setLoadingDelete(sampleId);
+
+      await deleteSample(sampleId);
+
+      showSuccess("Amostra removida com sucesso");
+      loadSamples();
+    } catch (error) {
+      showError("Erro ao remover amostra");
+    } finally {
+      setLoadingDelete(null);
+    }
+  }
+
   return (
     <div style={{ padding: 20 }}>
       <h2>Amostras</h2>
@@ -47,19 +73,29 @@ export default function SamplesPage() {
         Nova Amostra
       </Button>
 
-      <div style={{ marginTop: 20 }}>
+      <SampleContainer style={{ marginTop: 20 }}>
         {samples.map((s) => (
           <div key={s.id} style={card}>
-            <strong>ID:</strong> {s.id} <br />
-            <strong>Densidade:</strong> {s.sample_density} <br />
-            <strong>IQMS:</strong> {s.sample_score} <br />
-            <strong>Cidade:</strong> {s.city}
-            <div style={{ marginTop: 10 }}>
+            <p>{s.sample_density}</p>
+            <p>{s.sample_score}</p>
+            <p>{s.country}</p>
+            <p>{s.state}</p>
+            <p>{s.city}</p>
+            <p>{s.created_at}</p>
+            <div>
               <button onClick={() => handleEdit(s)}>Editar</button>
+              <button
+                onClick={() => handleDelete(s.id)}
+                disabled={loadingDelete === s.id}
+                style={{ background: "#ef4444", color: "#fff" }}
+              >
+                <Trash2 size={16} />
+                {loadingDelete === s.id ? "Removendo..." : "Excluir"}
+              </button>
             </div>
           </div>
         ))}
-      </div>
+      </SampleContainer>
 
       {open && (
         <div style={overlay}>

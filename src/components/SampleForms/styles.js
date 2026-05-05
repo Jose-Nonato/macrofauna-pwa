@@ -100,3 +100,21 @@ export const ButtonDisposition = styled.div`
     font-weight: bold;
   }
 `;
+
+export const overlayStyle = {
+  position: "fixed",
+  inset: 0,
+  background: "rgba(0,0,0,0.6)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 1000,
+};
+
+export const modalStyle = {
+  background: "#fff",
+  padding: 20,
+  borderRadius: 10,
+  width: "90%",
+  maxWidth: 500,
+};

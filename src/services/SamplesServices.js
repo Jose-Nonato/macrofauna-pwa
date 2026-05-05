@@ -63,3 +63,9 @@ export async function updateSample(id, sample) {
   if (error) throw error;
   return data;
 }
+
+export async function deleteSample(sampleId) {
+  const { error } = await supabase.from("samples").delete().eq("id", sampleId);
+
+  if (error) throw error;
+}

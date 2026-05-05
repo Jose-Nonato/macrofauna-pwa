@@ -18,22 +18,157 @@ import {
   CardSample,
   AddButton,
   ButtonDisposition,
+  modalStyle,
+  overlayStyle,
 } from "./styles";
 
+const SPECIES_INFO = {
+  EW: {
+    name: "Minhoca",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlp_lc6NMrY8XVTaRVpe7fsYOzFV2HjMUrPg&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLidOrD6gGIncQuMHSOrek_wfMLe-Dk0RhSA&s",
+    ],
+    description:
+      "Minhocas são fundamentais para a estrutura e fertilidade do solo.",
+  },
+  AN: {
+    name: "Formiga",
+    images: ["https://upload.wikimedia.org/wikipedia/commons/3/30/Ant.jpg"],
+    description: "Formigas contribuem para a ciclagem de nutrientes.",
+  },
+  TER: {
+    name: "Cupim",
+    images: [],
+    description: "Cupins atuam na decomposição de matéria orgânica.",
+  },
+  BLA: {
+    name: "Barata",
+    images: [],
+    description: "Baratas participam da decomposição.",
+  },
+  COL: {
+    name: "Besouro",
+    images: [],
+    description: "Besouros possuem diversas funções ecológicas.",
+  },
+  ARA: {
+    name: "Aranha",
+    images: [],
+    description: "Aranhas são predadoras importantes.",
+  },
+  DIPLO: {
+    name: "Diplópode",
+    images: [],
+    description: "Diplópodes ajudam na decomposição.",
+  },
+  CHI: {
+    name: "Quilópode",
+    images: [],
+    description: "Quilópodes são predadores do solo.",
+  },
+  HEMI: {
+    name: "Percevejo",
+    images: [],
+    description: "Percevejos possuem variados hábitos.",
+  },
+  DER: {
+    name: "Tesourinha",
+    images: [],
+    description: "Tesourinhas são onívoras.",
+  },
+  LEP: {
+    name: "Lagarta",
+    images: [],
+    description: "Lagartas são herbívoras importantes.",
+  },
+  GAS: {
+    name: "Moluscos",
+    images: [],
+    description: "Moluscos participam da decomposição.",
+  },
+  OT: { name: "Outros", images: [], description: "Outros organismos do solo." },
+};
+
 const FIELDS = [
-  { label: "Earthworm (EW)", subtitle: "Minhoca", key: "EW" },
-  { label: "Ant (AN)", subtitle: "Formiga", key: "AN" },
-  { label: "Isoptera (TER)", subtitle: "Cupins", key: "TER" },
-  { label: "Blattaria (BLA)", subtitle: "Barata", key: "BLA" },
-  { label: "Coleoptera (COL)", subtitle: "Besouro", key: "COL" },
-  { label: "Arachnida (ARA)", subtitle: "Aranha", key: "ARA" },
-  { label: "Diplopoda (DIPLO)", subtitle: "Diplópode", key: "DIPLO" },
-  { label: "Chilopoda (CHI)", subtitle: "Quilópode", key: "CHI" },
-  { label: "Hemiptera (HEMI)", subtitle: "Percevejo", key: "HEMI" },
-  { label: "Dermaptera (DER)", subtitle: "Tesourinha", key: "DER" },
-  { label: "Lepidoptera (LEP)", subtitle: "Lagarta", key: "LEP" },
-  { label: "Gasteropoda (GAS)", subtitle: "Caracóis e Lesmas", key: "GAS" },
-  { label: "Outros (OT)", subtitle: "Outros", key: "OT" },
+  {
+    label: "Earthworm (EW)",
+    subtitle: "Minhoca",
+    key: "EW",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Ant (AN)",
+    subtitle: "Formiga",
+    key: "AN",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Isoptera (TER)",
+    subtitle: "Cupins",
+    key: "TER",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Blattaria (BLA)",
+    subtitle: "Barata",
+    key: "BLA",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Coleoptera (COL)",
+    subtitle: "Besouro",
+    key: "COL",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Arachnida (ARA)",
+    subtitle: "Aranha",
+    key: "ARA",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Diplopoda (DIPLO)",
+    subtitle: "Diplópode",
+    key: "DIPLO",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Chilopoda (CHI)",
+    subtitle: "Quilópode",
+    key: "CHI",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Hemiptera (HEMI)",
+    subtitle: "Percevejo",
+    key: "HEMI",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Dermaptera (DER)",
+    subtitle: "Tesourinha",
+    key: "DER",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Lepidoptera (LEP)",
+    subtitle: "Lagarta",
+    key: "LEP",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Gasteropoda (GAS)",
+    subtitle: "Caracóis e Lesmas",
+    key: "GAS",
+    image_path: "/icones/Asset 3@3x.png",
+  },
+  {
+    label: "Outros (OT)",
+    subtitle: "Outros",
+    key: "OT",
+    image_path: "/icones/Asset 3@3x.png",
+  },
 ];
 
 const KEYS = FIELDS.map((f) => f.key);
@@ -57,6 +192,7 @@ const WEIGHTS = {
 export default function SampleForm({ initialData, onClose, onSaved }) {
   const [samples, setSamples] = useState([createEmpty()]);
   const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState({ open: false, key: null, index: 0 });
 
   const [form, setForm] = useState({
     country: "",
@@ -69,11 +205,8 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
   const isEdit = !!initialData?.id;
 
   useEffect(() => {
-    if (initialData) {
-      loadEditData();
-    } else {
-      loadLocation();
-    }
+    if (initialData) loadEditData();
+    else loadLocation();
   }, [initialData]);
 
   async function loadLocation() {
@@ -85,16 +218,13 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
         coords.longitude,
       );
 
-      setForm((prev) => ({
-        ...prev,
-        latitude: coords.latitude,
-        longitude: coords.longitude,
+      setForm({
         country: location.country,
         state: location.state,
         city: location.city,
-      }));
-    } catch (error) {
-      console.log(error.message);
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+      });
     } finally {
       setLoading(false);
     }
@@ -114,11 +244,6 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
 
       const insects = await getInsectsBySample(initialData.id);
 
-      if (!insects || insects.length === 0) {
-        setSamples([createEmpty()]);
-        return;
-      }
-
       const mapped = insects.map((i) => ({
         EW: i.earthworm || 0,
         AN: i.ant || 0,
@@ -137,9 +262,7 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
         iqms: i.iqms || 0,
       }));
 
-      setSamples(mapped);
-    } catch (error) {
-      showError("Erro ao carregar dados da amostra");
+      setSamples(mapped.length ? mapped : [createEmpty()]);
     } finally {
       setLoading(false);
     }
@@ -159,22 +282,20 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
       const s = { ...updated[index], [key]: Number(value) };
 
       const total = KEYS.reduce((sum, k) => sum + (s[k] || 0), 0);
-      const rawDensity = total * 16;
-      const logDensity = Math.log10(rawDensity + 1);
+      const logDensity = Math.log10(total * 16 + 1);
       s.density = Number(logDensity.toFixed(2));
 
       const rt = KEYS.filter((k) => (s[k] || 0) > 0).length;
 
-      let iqmsSum = 0;
+      let iqms = 0;
       KEYS.forEach((k) => {
-        const val = s[k] || 0;
-        if (val > 0) iqmsSum += Math.log10(WEIGHTS[k] * val);
+        if (s[k] > 0) iqms += Math.log10(WEIGHTS[k] * s[k]);
       });
 
-      if (s.density > 0) iqmsSum += Math.log10(31.8 * s.density);
-      if (rt > 0) iqmsSum += Math.log10(31.8 * rt);
+      if (s.density > 0) iqms += Math.log10(31.8 * s.density);
+      if (rt > 0) iqms += Math.log10(31.8 * rt);
 
-      s.iqms = Number((iqmsSum * 0.0014 + 0.1).toFixed(2));
+      s.iqms = Number((iqms * 0.0014 + 0.1).toFixed(2));
 
       updated[index] = s;
       return updated;
@@ -185,35 +306,32 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
     setSamples((prev) => [...prev, createEmpty()]);
   }
 
+  function removeSample(index) {
+    setSamples((prev) =>
+      prev.length === 1 ? prev : prev.filter((_, i) => i !== index),
+    );
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       setLoading(true);
 
       const avgDensity =
-        samples.reduce((sum, s) => sum + s.density, 0) / samples.length;
+        samples.reduce((s, v) => s + v.density, 0) / samples.length;
+      const avgIqms = samples.reduce((s, v) => s + v.iqms, 0) / samples.length;
 
-      const avgIqms =
-        samples.reduce((sum, s) => sum + s.iqms, 0) / samples.length;
-
-      let sample;
-
-      if (isEdit) {
-        sample = await updateSample(initialData.id, {
-          sample_density: avgDensity,
-          sample_score: avgIqms,
-          ...form,
-        });
-      } else {
-        sample = await createSample({
-          sample_density: avgDensity,
-          sample_score: avgIqms,
-          ...form,
-        });
-      }
-
-      if (!sample?.id) throw new Error("Erro ao salvar");
+      const sample = isEdit
+        ? await updateSample(initialData.id, {
+            sample_density: avgDensity,
+            sample_score: avgIqms,
+            ...form,
+          })
+        : await createSample({
+            sample_density: avgDensity,
+            sample_score: avgIqms,
+            ...form,
+          });
 
       if (isEdit) {
         await supabase.from("insect").delete().eq("sample_id", sample.id);
@@ -241,9 +359,8 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
       await insertInsects(insects);
 
       showSuccess(isEdit ? "Amostra atualizada!" : "Amostra criada!");
-
       onSaved?.();
-    } catch (error) {
+    } catch {
       showError("Erro ao salvar amostra");
     } finally {
       setLoading(false);
@@ -254,27 +371,34 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
     <Container>
       <h2>{isEdit ? "Editar Amostra" : "Nova Amostra"}</h2>
 
-      {loading && <p>Carregando...</p>}
-
       <form onSubmit={handleSubmit}>
         <div>
           <input value={form.country} readOnly />
           <input value={form.state} readOnly />
           <input value={form.city} readOnly />
         </div>
+
         {samples.map((s, i) => (
           <Card key={i}>
             <Title>Amostra {i + 1}</Title>
+
             <div>
               {FIELDS.map((f) => (
                 <CardSample key={f.key}>
                   <div className="internalCard">
-                    <img src="/icones/Asset 3@3x.png" />
+                    <img
+                      src={f.image_path}
+                      onClick={() =>
+                        setModal({ open: true, key: f.key, index: 0 })
+                      }
+                      style={{ cursor: "pointer" }}
+                    />
                     <div className="titleCard">
                       <label>{f.label}</label>
                       <span>{f.subtitle}</span>
                     </div>
                   </div>
+
                   <input
                     type="number"
                     value={s[f.key]}
@@ -283,23 +407,76 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                 </CardSample>
               ))}
             </div>
-            {/* <p>
-              Density: {s.density} | IQMS: {s.iqms}
-            </p> */}
+
+            <ButtonDisposition>
+              <button
+                type="button"
+                onClick={() => removeSample(i)}
+                disabled={samples.length === 1}
+              >
+                Remover Amostra
+              </button>
+            </ButtonDisposition>
           </Card>
         ))}
-        <AddButton type="button" onClick={addSample} disabled={loading}>
+
+        <AddButton type="button" onClick={addSample}>
           Adicionar Amostra
         </AddButton>
-        <ButtonDisposition style={{ marginTop: 10 }}>
-          <button type="submit" disabled={loading}>
-            {loading ? "Salvando..." : isEdit ? "Atualizar" : "Salvar"}
-          </button>
+
+        <ButtonDisposition>
+          <button type="submit">{loading ? "Salvando..." : "Salvar"}</button>
           <button type="button" onClick={onClose}>
             Cancelar
           </button>
         </ButtonDisposition>
       </form>
+
+      {modal.open && (
+        <div style={overlayStyle}>
+          <div style={modalStyle}>
+            <button onClick={() => setModal({ open: false })}>X</button>
+
+            <h3>{SPECIES_INFO[modal.key]?.name}</h3>
+
+            {SPECIES_INFO[modal.key]?.images.length > 0 && (
+              <img
+                src={SPECIES_INFO[modal.key].images[modal.index]}
+                style={{ width: "100%", maxHeight: 300, objectFit: "cover" }}
+              />
+            )}
+
+            <p>{SPECIES_INFO[modal.key]?.description}</p>
+
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <button
+                onClick={() =>
+                  setModal((m) => ({
+                    ...m,
+                    index:
+                      m.index === 0
+                        ? SPECIES_INFO[m.key].images.length - 1
+                        : m.index - 1,
+                  }))
+                }
+              >
+                ◀
+              </button>
+
+              <button
+                onClick={() =>
+                  setModal((m) => ({
+                    ...m,
+                    index: (m.index + 1) % SPECIES_INFO[m.key].images.length,
+                  }))
+                }
+              >
+                ▶
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Container>
   );
 }

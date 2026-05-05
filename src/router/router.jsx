@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Register from "../pages/Register/Register";
 import Profiles from "../pages/Profiles/Profiles";
 import SamplesPage from "../pages/SamplesPages/SamplesPages";
+import Maps from "../pages/Maps/Maps";
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -36,6 +37,16 @@ export const router = createBrowserRouter([
       <AuthGuard>
         <AppLayout>
           <SamplesPage />
+        </AppLayout>
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/maps",
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Maps />
         </AppLayout>
       </AuthGuard>
     ),

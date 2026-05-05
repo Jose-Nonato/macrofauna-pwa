@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const SampleContainer = styled.div``;
+
 export const Button = styled.button`
   display: flex;
   align-items: center;
