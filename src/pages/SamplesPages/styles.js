@@ -30,7 +30,7 @@ export const overlay = {
 };
 
 export const drawer = {
-  width: 420,
+  width: 500,
   background: "#fff",
   padding: 20,
   overflowY: "auto",

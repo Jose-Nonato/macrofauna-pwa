@@ -11,7 +11,14 @@ import {
 } from "../../services/SamplesServices";
 import { supabase } from "../../lib/supabase";
 import { showError, showSuccess } from "../../utils/alert";
-import { card, grid } from "./styles";
+import {
+  Card,
+  Container,
+  Title,
+  CardSample,
+  AddButton,
+  ButtonDisposition,
+} from "./styles";
 
 const FIELDS = [
   { label: "Earthworm (EW)", subtitle: "Minhoca", key: "EW" },
@@ -244,63 +251,55 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
   }
 
   return (
-    <div>
+    <Container>
       <h2>{isEdit ? "Editar Amostra" : "Nova Amostra"}</h2>
 
       {loading && <p>Carregando...</p>}
 
       <form onSubmit={handleSubmit}>
-        <div style={{ display: "flex", gap: 10 }}>
+        <div>
           <input value={form.country} readOnly />
           <input value={form.state} readOnly />
           <input value={form.city} readOnly />
         </div>
-
         {samples.map((s, i) => (
-          <div key={i} style={card}>
-            <h4>Amostra {i + 1}</h4>
-
-            <div style={grid}>
+          <Card key={i}>
+            <Title>Amostra {i + 1}</Title>
+            <div>
               {FIELDS.map((f) => (
-                <div
-                  key={f.key}
-                  style={{ display: "flex", flexDirection: "column" }}
-                >
-                  <label style={{ fontSize: 12, fontWeight: "bold" }}>
-                    {f.label}
-                  </label>
-                  <span style={{ fontSize: 11, color: "#666" }}>
-                    {f.subtitle}
-                  </span>
+                <CardSample key={f.key}>
+                  <div className="internalCard">
+                    <img src="/icones/Asset 3@3x.png" />
+                    <div className="titleCard">
+                      <label>{f.label}</label>
+                      <span>{f.subtitle}</span>
+                    </div>
+                  </div>
                   <input
                     type="number"
                     value={s[f.key]}
                     onChange={(e) => handleChange(i, f.key, e.target.value)}
                   />
-                </div>
+                </CardSample>
               ))}
             </div>
-
-            <p>
+            {/* <p>
               Density: {s.density} | IQMS: {s.iqms}
-            </p>
-          </div>
+            </p> */}
+          </Card>
         ))}
-
-        <button type="button" onClick={addSample} disabled={loading}>
-          + Adicionar Amostra
-        </button>
-
-        <div style={{ marginTop: 10 }}>
+        <AddButton type="button" onClick={addSample} disabled={loading}>
+          Adicionar Amostra
+        </AddButton>
+        <ButtonDisposition style={{ marginTop: 10 }}>
           <button type="submit" disabled={loading}>
             {loading ? "Salvando..." : isEdit ? "Atualizar" : "Salvar"}
           </button>
-
           <button type="button" onClick={onClose}>
             Cancelar
           </button>
-        </div>
+        </ButtonDisposition>
       </form>
-    </div>
+    </Container>
   );
 }
