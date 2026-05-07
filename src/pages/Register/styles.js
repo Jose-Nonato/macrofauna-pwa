@@ -54,7 +54,7 @@ export const Button = styled.button`
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background: #1e293b;
+  background: #14663b;
   color: white;
   cursor: pointer;
 
@@ -71,7 +71,7 @@ export const Button = styled.button`
 export const Link = styled.span`
   text-align: center;
   cursor: pointer;
-  color: #1e293b;
+  color: #14663b;
 
   &:hover {
     text-decoration: underline;

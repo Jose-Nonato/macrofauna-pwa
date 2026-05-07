@@ -2,6 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.aside`
   background: #14663b;
+  height: 100vh;
+  overflow: hidden;
+
+  position: sticky;
+  top: 0;
+
+  background: #14663b;
   color: #fff;
   display: flex;
   flex-direction: column;

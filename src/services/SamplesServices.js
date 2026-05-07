@@ -12,6 +12,14 @@ export async function getSamples() {
   return data;
 }
 
+export async function getAllInsects() {
+  const { data, error } = await supabase.from("insect").select("*");
+
+  if (error) throw error;
+
+  return data;
+}
+
 export async function getInsectsBySample(sampleId) {
   const { data, error } = await supabase
     .from("insect")
