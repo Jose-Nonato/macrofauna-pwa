@@ -47,7 +47,7 @@ export const CardSample = styled.div`
   }
 
   input {
-    width: 10%;
+    width: 20%;
     border: 1px solid #ddd;
     padding: 5px;
     border-radius: 5px;
