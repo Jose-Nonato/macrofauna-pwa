@@ -261,7 +261,7 @@ export const overlay = {
 
 export const drawer = {
   width: "100%",
-  maxWidth: "500px",
+  maxWidth: "600px",
   height: "100%",
   background: "#fff",
   padding: "24px",

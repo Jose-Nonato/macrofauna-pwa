@@ -20,6 +20,12 @@ import {
   ButtonDisposition,
   modalStyle,
   overlayStyle,
+  LocationContainer,
+  ModalDescription,
+  ModalHeader,
+  ModalImage,
+  ModalNavigation,
+  SamplesGrid,
 } from "./styles";
 
 const SPECIES_INFO = {
@@ -372,11 +378,22 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
       <h2>{isEdit ? "Editar Amostra" : "Nova Amostra"}</h2>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          <input value={form.country} readOnly />
-          <input value={form.state} readOnly />
-          <input value={form.city} readOnly />
-        </div>
+        <LocationContainer>
+          <div className="field">
+            <label>País</label>
+            <input value={form.country} readOnly />
+          </div>
+
+          <div className="field">
+            <label>Estado</label>
+            <input value={form.state} readOnly />
+          </div>
+
+          <div className="field">
+            <label>Cidade</label>
+            <input value={form.city} readOnly />
+          </div>
+        </LocationContainer>
 
         {samples.map((s, i) => (
           <Card key={i}>
@@ -389,10 +406,15 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                     <img
                       src={f.image_path}
                       onClick={() =>
-                        setModal({ open: true, key: f.key, index: 0 })
+                        setModal({
+                          open: true,
+                          key: f.key,
+                          index: 0,
+                        })
                       }
                       style={{ cursor: "pointer" }}
                     />
+
                     <div className="titleCard">
                       <label>{f.label}</label>
                       <span>{f.subtitle}</span>
@@ -435,20 +457,21 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
       {modal.open && (
         <div style={overlayStyle}>
           <div style={modalStyle}>
-            <button onClick={() => setModal({ open: false })}>X</button>
+            <ModalHeader>
+              <h3>{SPECIES_INFO[modal.key]?.name}</h3>
 
-            <h3>{SPECIES_INFO[modal.key]?.name}</h3>
+              <button onClick={() => setModal({ open: false })}>✕</button>
+            </ModalHeader>
 
             {SPECIES_INFO[modal.key]?.images.length > 0 && (
-              <img
-                src={SPECIES_INFO[modal.key].images[modal.index]}
-                style={{ width: "100%", maxHeight: 300, objectFit: "cover" }}
-              />
+              <ModalImage src={SPECIES_INFO[modal.key].images[modal.index]} />
             )}
 
-            <p>{SPECIES_INFO[modal.key]?.description}</p>
+            <ModalDescription>
+              {SPECIES_INFO[modal.key]?.description}
+            </ModalDescription>
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <ModalNavigation>
               <button
                 onClick={() =>
                   setModal((m) => ({
@@ -460,7 +483,7 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                   }))
                 }
               >
-                ◀
+                ◀ Anterior
               </button>
 
               <button
@@ -471,9 +494,9 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                   }))
                 }
               >
-                ▶
+                Próxima ▶
               </button>
-            </div>
+            </ModalNavigation>
           </div>
         </div>
       )}
