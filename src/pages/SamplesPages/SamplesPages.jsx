@@ -1,19 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  PlusCircle,
-  MapPin,
-  CalendarDays,
-  ChartColumn,
-} from "lucide-react";
+import { PlusCircle, MapPin, CalendarDays, ChartColumn } from "lucide-react";
 import SampleForm from "../../components/SampleForms/SampleForms";
-import {
-  getSamples,
-  deleteSample,
-} from "../../services/SamplesServices";
-import {
-  showError,
-  showSuccess,
-} from "../../utils/alert";
+import { getSamples, deleteSample } from "../../services/SamplesServices";
+import { showError, showSuccess } from "../../utils/alert";
 import {
   drawer,
   overlay,
@@ -81,39 +70,26 @@ export default function SamplesPage() {
   const filteredSamples = samples.filter((sample) => {
     const countryMatch =
       !filters.country ||
-      sample.country
-        ?.toLowerCase()
-        .includes(filters.country.toLowerCase());
+      sample.country?.toLowerCase().includes(filters.country.toLowerCase());
 
     const stateMatch =
       !filters.state ||
-      sample.state
-        ?.toLowerCase()
-        .includes(filters.state.toLowerCase());
+      sample.state?.toLowerCase().includes(filters.state.toLowerCase());
 
     const cityMatch =
       !filters.city ||
-      sample.city
-        ?.toLowerCase()
-        .includes(filters.city.toLowerCase());
+      sample.city?.toLowerCase().includes(filters.city.toLowerCase());
 
     const sampleDate = new Date(sample.created_at);
 
     const startDateMatch =
-      !filters.startDate ||
-      sampleDate >= new Date(filters.startDate);
+      !filters.startDate || sampleDate >= new Date(filters.startDate);
 
     const endDateMatch =
-      !filters.endDate ||
-      sampleDate <=
-        new Date(filters.endDate + "T23:59:59");
+      !filters.endDate || sampleDate <= new Date(filters.endDate + "T23:59:59");
 
     return (
-      countryMatch &&
-      stateMatch &&
-      cityMatch &&
-      startDateMatch &&
-      endDateMatch
+      countryMatch && stateMatch && cityMatch && startDateMatch && endDateMatch
     );
   });
 
@@ -164,9 +140,7 @@ export default function SamplesPage() {
       <div className="topHeader">
         <div>
           <h2>Amostras</h2>
-          <p>
-            Gerencie suas amostras cadastradas
-          </p>
+          <p>Gerencie suas amostras cadastradas</p>
         </div>
         <Button onClick={handleCreate}>
           <PlusCircle size={18} />
@@ -222,10 +196,7 @@ export default function SamplesPage() {
             onChange={handleFilterChange}
           />
         </div>
-        <button
-          className="clearFilters"
-          onClick={clearFilters}
-        >
+        <button className="clearFilters" onClick={clearFilters}>
           Limpar
         </button>
       </div>
@@ -238,15 +209,10 @@ export default function SamplesPage() {
                   <MapPin size={18} />
                   {s.city}, {s.state}
                 </h3>
-                <p className="country">
-                  {s.country}
-                </p>
+                <p className="country">{s.country}</p>
               </div>
               <div className="actions">
-                <button
-                  onClick={() => handleEdit(s)}
-                  className="editBtn"
-                >
+                <button onClick={() => handleEdit(s)} className="editBtn">
                   Editar
                 </button>
                 <button
@@ -254,9 +220,7 @@ export default function SamplesPage() {
                   disabled={loadingDelete === s.id}
                   className="removeBtn"
                 >
-                  {loadingDelete === s.id
-                    ? "Removendo..."
-                    : "Excluir"}
+                  {loadingDelete === s.id ? "Removendo..." : "Excluir"}
                 </button>
               </div>
             </div>
@@ -264,27 +228,18 @@ export default function SamplesPage() {
               <div className="infoRow">
                 <ChartColumn size={18} />
                 <span>
-                  Densidade:{" "}
-                  <strong>
-                    {s.sample_density}
-                  </strong>
+                  Densidade: <strong>{s.sample_density}</strong>
                 </span>
               </div>
               <div className="infoRow">
                 <span>
-                  Score:{" "}
-                  <strong>
-                    {s.sample_score}
-                  </strong>
+                  Score: <strong>{s.sample_score}</strong>
                 </span>
               </div>
               <div className="infoRow">
                 <CalendarDays size={18} />
                 <span>
-                  Criado em:{" "}
-                  <strong>
-                    {formatDate(s.created_at)}
-                  </strong>
+                  Criado em: <strong>{formatDate(s.created_at)}</strong>
                 </span>
               </div>
             </div>
