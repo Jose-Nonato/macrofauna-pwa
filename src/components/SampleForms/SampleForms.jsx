@@ -36,64 +36,116 @@ const SPECIES_INFO = {
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLidOrD6gGIncQuMHSOrek_wfMLe-Dk0RhSA&s",
     ],
     description:
-      "Minhocas são fundamentais para a estrutura e fertilidade do solo.",
+      "Minhocas são fundamentais para a estrutura e fertilidade do solo, promovendo aeração e ciclagem de nutrientes.",
   },
   AN: {
     name: "Formiga",
-    images: ["https://upload.wikimedia.org/wikipedia/commons/3/30/Ant.jpg"],
-    description: "Formigas contribuem para a ciclagem de nutrientes.",
+    images: [
+      "https://super.abril.com.br/wp-content/uploads/2013/07/formiga.png?w=720&h=440&crop=1",
+      "https://img.odcdn.com.br/wp-content/uploads/2022/06/formiga-de-fogo.jpg",
+    ],
+    description:
+      "Formigas contribuem para a ciclagem de nutrientes, dispersão de sementes e aeração do solo.",
   },
   TER: {
     name: "Cupim",
-    images: [],
-    description: "Cupins atuam na decomposição de matéria orgânica.",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHdBuLpXORk1C6FEcpicMiFAbK1uzmEGKLjw&s",
+      "https://i0.wp.com/cleantec.com.br/wp-content/uploads/2021/11/o-que-sao-isopteras-e-o-impacto-dos-cupins-na-natureza-e-na-economia.jpg",
+    ],
+    description:
+      "Cupins atuam na decomposição de matéria orgânica lignificada, sendo engenheiros fundamentais do ecossistema do solo.",
   },
   BLA: {
     name: "Barata",
-    images: [],
-    description: "Baratas participam da decomposição.",
+    images: [
+      "https://kelldrin.com.br/wp-content/uploads/2020/11/barata.jpg",
+      "https://agrodedetizadora.com.br/wp-content/uploads/2018/04/barata-1200x600.jpg",
+    ],
+    description:
+      "Baratas participam ativamente da decomposição de matéria orgânica, contribuindo para a reciclagem de nutrientes no solo.",
   },
   COL: {
     name: "Besouro",
-    images: [],
-    description: "Besouros possuem diversas funções ecológicas.",
+    images: [
+      "https://terramagna.com.br/wp-content/uploads/2022/07/Femea-besouro-veado-ambiente-natural-galho.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFMKFza6XWB9xA0mkIwbH9PE65eHIfRkh48Q&s",
+    ],
+    description:
+      "Besouros possuem diversas funções ecológicas, incluindo decomposição, predação, polinização e bioturbação do solo.",
   },
   ARA: {
     name: "Aranha",
-    images: [],
-    description: "Aranhas são predadoras importantes.",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRshtOWxIsIL3SsCE1NSEQwgZgB6SvP3xdMw&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp78wd9S5DSMHRn9UeJ7LS2N0RDhAtN_oRMQ&s",
+    ],
+    description:
+      "Aranhas são predadoras importantes que regulam populações de insetos e outros invertebrados no solo e na vegetação.",
   },
   DIPLO: {
     name: "Diplópode",
-    images: [],
-    description: "Diplópodes ajudam na decomposição.",
+    images: [
+      "https://t4.ftcdn.net/jpg/00/14/35/33/360_F_14353302_bgLxl9vweLmIMIBgQP5nkkkdrLYrYuR0.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9b-oiH4tPsacsVPSwPwcAZzrOcCxxyiuwjQ&s",
+    ],
+    description:
+      "Diplópodes (piolhos-de-cobra) ajudam na decomposição de resíduos vegetais, fragmentando a serapilheira e acelerando a ciclagem de nutrientes.",
   },
   CHI: {
     name: "Quilópode",
-    images: [],
-    description: "Quilópodes são predadores do solo.",
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3eiDIqpPqyk_0gsq08QLzbBAjY2gIdlqo4A&s",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Scolopendra_heros_dorsal_view.jpg/250px-Scolopendra_heros_dorsal_view.jpg",
+    ],
+    description:
+      "Quilópodes (centopeias) são predadores ágeis do solo, controlando populações de pequenos invertebrados e contribuindo para o equilíbrio da fauna edáfica.",
   },
   HEMI: {
     name: "Percevejo",
-    images: [],
-    description: "Percevejos possuem variados hábitos.",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bed_bug%2C_Cimex_lectularius.jpg/330px-Bed_bug%2C_Cimex_lectularius.jpg",
+      "https://www.ferwer.pt/img/blog/prsty-stenice-stadia.webp",
+    ],
+    description:
+      "Percevejos (Hemiptera) possuem variados hábitos alimentares — fitófagos, predadores ou detritívoros — desempenhando papéis distintos nas cadeias tróficas do solo.",
   },
   DER: {
     name: "Tesourinha",
-    images: [],
-    description: "Tesourinhas são onívoras.",
+    images: [
+      "https://chb.com.br/storage/blog/172801.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxCIZuNGI9o8fOwdmwtwHXSO7vGNijH5TDig&s",
+    ],
+    description:
+      "Tesourinhas são onívoras e oportunistas, alimentando-se de matéria orgânica em decomposição, fungos e pequenos invertebrados, contribuindo para o equilíbrio da macrofauna.",
   },
   LEP: {
     name: "Lagarta",
-    images: [],
-    description: "Lagartas são herbívoras importantes.",
+    images: [
+      "https://maisagro.syngenta.com.br/media/uploads/2023/11/IMAGEM03-glossario-de-alvos-lagarta-militar_0-1.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Ij7c-n39t57R4V3-SboRM833V8ck7Zujpw&s",
+    ],
+    description:
+      "Lagartas são larvas de lepidópteros herbívoras que influenciam a biomassa vegetal e, quando presentes no solo, contribuem para a bioturbação e ciclagem de matéria orgânica.",
   },
   GAS: {
     name: "Moluscos",
-    images: [],
-    description: "Moluscos participam da decomposição.",
+    images: [
+      "https://s2.static.brasilescola.uol.com.br/be/2020/11/caracol.jpg",
+      "https://static.escolakids.uol.com.br/2020/10/gastropode.jpg",
+    ],
+    description:
+      "Moluscos terrestres (lesmas e caracóis) participam da decomposição de matéria orgânica vegetal e são importantes elos nas cadeias alimentares do solo.",
   },
-  OT: { name: "Outros", images: [], description: "Outros organismos do solo." },
+  OT: {
+    name: "Outros",
+    images: [
+      "https://agrodedetizadora.com.br/wp-content/uploads/2018/04/tatuzinho-1200x600.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR63NaAnowUAsSV5jjSNwkOopWx0TR8RDvryQ&s",
+    ],
+    description:
+      "Outros organismos do solo incluem colêmbolos, ácaros, isópodes e demais invertebrados que desempenham funções ecológicas variadas na macrofauna edáfica.",
+  },
 };
 
 const FIELDS = [
@@ -101,79 +153,79 @@ const FIELDS = [
     label: "Earthworm (EW)",
     subtitle: "Minhoca",
     key: "EW",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Minhoca.png",
   },
   {
     label: "Ant (AN)",
     subtitle: "Formiga",
     key: "AN",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Formiga.png",
   },
   {
     label: "Isoptera (TER)",
     subtitle: "Cupins",
     key: "TER",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Cupins.png",
   },
   {
     label: "Blattaria (BLA)",
     subtitle: "Barata",
     key: "BLA",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Barata.png",
   },
   {
     label: "Coleoptera (COL)",
     subtitle: "Besouro",
     key: "COL",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Besouro.png",
   },
   {
     label: "Arachnida (ARA)",
     subtitle: "Aranha",
     key: "ARA",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Aranha.png",
   },
   {
     label: "Diplopoda (DIPLO)",
     subtitle: "Diplópode",
     key: "DIPLO",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Diplópode.png",
   },
   {
     label: "Chilopoda (CHI)",
     subtitle: "Quilópode",
     key: "CHI",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Quilópode.png",
   },
   {
     label: "Hemiptera (HEMI)",
     subtitle: "Percevejo",
     key: "HEMI",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Percevejo.png",
   },
   {
     label: "Dermaptera (DER)",
     subtitle: "Tesourinha",
     key: "DER",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Tesourinha.png",
   },
   {
     label: "Lepidoptera (LEP)",
     subtitle: "Lagarta",
     key: "LEP",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Lagarta.png",
   },
   {
     label: "Gasteropoda (GAS)",
     subtitle: "Caracóis e Lesmas",
     key: "GAS",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Caracóis e Lesmas.png",
   },
   {
     label: "Outros (OT)",
     subtitle: "Outros",
     key: "OT",
-    image_path: "/icones/Asset 3@3x.png",
+    image_path: "/icones/Outros.png",
   },
 ];
 
@@ -483,7 +535,7 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                   }))
                 }
               >
-                ◀ Anterior
+                Anterior
               </button>
 
               <button
@@ -494,7 +546,7 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                   }))
                 }
               >
-                Próxima ▶
+                Próxima
               </button>
             </ModalNavigation>
           </div>

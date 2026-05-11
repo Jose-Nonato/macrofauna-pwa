@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background: #14663b;
+  background: #54a676;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -88,7 +88,7 @@ export const PageContainer = styled.div`
   }
 
   .filterItem input:focus {
-    border-color: #14663b;
+    border-color: #54a676;
     box-shadow: 0 0 0 3px rgba(20, 102, 59, 0.1);
   }
 
@@ -100,7 +100,7 @@ export const PageContainer = styled.div`
     border: none;
     border-radius: 10px;
 
-    background: #ef4444;
+    background: #c0392b;
     color: #fff;
 
     font-weight: 600;
@@ -215,11 +215,11 @@ export const SampleContainer = styled.div`
   }
 
   .editBtn {
-    background: #14663b;
+    background: #54a676;
   }
 
   .removeBtn {
-    background: #dc2626;
+    background: #c0392b;
   }
 
   .editBtn:hover,

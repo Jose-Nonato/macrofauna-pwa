@@ -8,7 +8,7 @@ export const Container = styled.aside`
   position: sticky;
   top: 0;
 
-  background: #14663b;
+  background: #54a676;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ export const Item = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #f5b109;
+    background: #e67e22;
   }
 `;
 
@@ -74,7 +74,7 @@ export const LogoutBtn = styled.button`
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background: #ef1b1b;
+  background: #c0392b;
   color: #fff;
   cursor: pointer;
 `;
