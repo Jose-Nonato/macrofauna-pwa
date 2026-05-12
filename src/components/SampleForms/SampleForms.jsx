@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import PhotoUploader from "../../components/PhotoUploader/PhotoUploader";
+import {
+  deletePhoto,
+  getPhotosBySample,
+  uploadPhoto,
+} from "../../services/PhotosServices";
 import {
   getCurrentPosition,
   reverseCoordenates,
@@ -251,6 +257,13 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
   const [samples, setSamples] = useState([createEmpty()]);
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState({ open: false, key: null, index: 0 });
+  const [photos, setPhotos] = useState({
+    NORTE: [],
+    SUL: [],
+    LESTE: [],
+    OESTE: [],
+  });
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
   const [form, setForm] = useState({
     country: "",
@@ -263,8 +276,12 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
   const isEdit = !!initialData?.id;
 
   useEffect(() => {
-    if (initialData) loadEditData();
-    else loadLocation();
+    if (!initialData?.id) {
+      loadLocation();
+      return;
+    }
+
+    loadEditData();
   }, [initialData]);
 
   async function loadLocation() {
@@ -290,17 +307,22 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
 
   async function loadEditData() {
     try {
+      if (!initialData?.id) return;
+
       setLoading(true);
 
       setForm({
-        country: initialData.country,
-        state: initialData.state,
-        city: initialData.city,
-        latitude: initialData.latitude,
-        longitude: initialData.longitude,
+        country: initialData?.country || "",
+        state: initialData?.state || "",
+        city: initialData?.city || "",
+        latitude: initialData?.latitude || "",
+        longitude: initialData?.longitude || "",
       });
 
-      const insects = await getInsectsBySample(initialData.id);
+      const [existingPhotos, insects] = await Promise.all([
+        getPhotosBySample(initialData.id),
+        getInsectsBySample(initialData.id),
+      ]);
 
       const mapped = insects.map((i) => ({
         EW: i.earthworm || 0,
@@ -321,6 +343,10 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
       }));
 
       setSamples(mapped.length ? mapped : [createEmpty()]);
+      setUploadedPhotos(existingPhotos || []);
+    } catch (error) {
+      console.log(error);
+      showError("Erro ao carregar amostra");
     } finally {
       setLoading(false);
     }
@@ -416,12 +442,32 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
 
       await insertInsects(insects);
 
+      for (const direction in photos) {
+        const files = photos[direction];
+
+        for (const file of files) {
+          await uploadPhoto(file, direction, sample.id);
+        }
+      }
+
       showSuccess(isEdit ? "Amostra atualizada!" : "Amostra criada!");
       onSaved?.();
     } catch {
       showError("Erro ao salvar amostra");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function removeUploadedPhoto(photoId) {
+    try {
+      await deletePhoto(photoId);
+
+      setUploadedPhotos((prev) => prev.filter((p) => p.id !== photoId));
+
+      showSuccess("Foto removida");
+    } catch {
+      showError("Erro ao remover foto");
     }
   }
 
@@ -446,7 +492,12 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
             <input value={form.city} readOnly />
           </div>
         </LocationContainer>
-
+        <PhotoUploader
+          photos={photos}
+          setPhotos={setPhotos}
+          uploadedPhotos={uploadedPhotos}
+          removeUploadedPhoto={removeUploadedPhoto}
+        />
         {samples.map((s, i) => (
           <Card key={i}>
             <Title>Amostra {i + 1}</Title>
@@ -493,11 +544,9 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
             </ButtonDisposition>
           </Card>
         ))}
-
         <AddButton type="button" onClick={addSample}>
           Adicionar Amostra
         </AddButton>
-
         <ButtonDisposition>
           <button type="submit">{loading ? "Salvando..." : "Salvar"}</button>
           <button type="button" onClick={onClose}>
