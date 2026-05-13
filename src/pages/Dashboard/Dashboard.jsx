@@ -302,7 +302,7 @@ export default function Dashboard() {
             boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
           }}
         >
-          <h3>Média Geral IQMS</h3>
+          <h3>Média Geral IGSS</h3>
           <ResponsiveContainer width="100%" height={260}>
             <RadialBarChart
               innerRadius="70%"
