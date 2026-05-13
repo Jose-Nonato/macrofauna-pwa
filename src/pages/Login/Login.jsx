@@ -61,6 +61,12 @@ export default function Login() {
             {loading ? "Entrando..." : "Entrar"}
           </Button>
           <Link onClick={() => navigate("/register")}>Crie sua conta</Link>
+          <div className="logos">
+            <img className="cesupa" src="/logos/cesupa.svg" alt="Cesupa" />
+            <img className="cirad" src="/logos/cirad.png" alt="Cirad" />
+            <img className="goeld" src="/logos/goeldi.png" alt="Goeld" />
+            <img className="soborne" src="/logos/soborne.jpg" alt="Sobornne" />
+          </div>
         </Form>
       </Left>
       <Right />

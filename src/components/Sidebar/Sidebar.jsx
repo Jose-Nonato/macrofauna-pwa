@@ -1,5 +1,13 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { LayoutDashboard, User, LogOut, X, Bug, Map } from "lucide-react";
+import {
+  LayoutDashboard,
+  User,
+  LogOut,
+  X,
+  Bug,
+  Map,
+  BookOpen,
+} from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 import {
   Close,
@@ -22,6 +30,7 @@ export default function Sidebar({ open, setOpen }) {
     { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
     { label: "Amostras", icon: Bug, path: "/samples" },
     { label: "Mapa", icon: Map, path: "/maps" },
+    { label: "Metodologia", icon: BookOpen, path: "/tsbf" },
     { label: "Perfil", icon: User, path: "/profiles" },
   ];
 

@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import Profiles from "../pages/Profiles/Profiles";
 import SamplesPage from "../pages/SamplesPages/SamplesPages";
 import Maps from "../pages/Maps/Maps";
+import TSBFInfo from "../pages/TSBFInfo/TSBFInfo";
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -47,6 +48,16 @@ export const router = createBrowserRouter([
       <AuthGuard>
         <AppLayout>
           <Maps />
+        </AppLayout>
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/tsbf",
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <TSBFInfo />
         </AppLayout>
       </AuthGuard>
     ),
