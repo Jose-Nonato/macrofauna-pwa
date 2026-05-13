@@ -368,7 +368,7 @@ export default function Dashboard() {
           boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
         }}
       >
-        <h3>Representação das Espécies</h3>
+        <h3>Representação dos Grupos Taxonômicos</h3>
         <div
           style={{
             overflowX: "auto",
@@ -388,7 +388,7 @@ export default function Dashboard() {
                   textAlign: "left",
                 }}
               >
-                <th style={th}>Espécie</th>
+                <th style={th}>Grupo Taxonômico</th>
                 <th style={th}>Quantidade</th>
                 <th style={th}>Representação</th>
               </tr>
@@ -415,7 +415,7 @@ export default function Dashboard() {
           boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
         }}
       >
-        <h3>Distribuição das Espécies</h3>
+        <h3>Distribuição dos Grupos Taxonômicos</h3>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={speciesData}>
             <CartesianGrid strokeDasharray="3 3" />
