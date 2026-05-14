@@ -128,7 +128,7 @@ export default function TSBFInfo() {
             <span>6</span>
 
             <div>
-              <h3>Cálculo do IQMS</h3>
+              <h3>Cálculo do IGSS</h3>
 
               <p>
                 O sistema calculará automaticamente densidade e índice de
@@ -168,7 +168,7 @@ export default function TSBFInfo() {
       </Section>
 
       <Section>
-        <h2>Interpretação do IQMS</h2>
+        <h2>Interpretação do IGSS</h2>
 
         <CardGrid>
           <Card>

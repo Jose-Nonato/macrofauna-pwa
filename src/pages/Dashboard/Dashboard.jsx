@@ -22,6 +22,13 @@ const COLORS = {
   bad: "#ef4444",
 };
 
+const getIGSSLabel = (value) => {
+  if (value >= 0.75) return "Excelente qualidade";
+  if (value >= 0.5) return "Boa qualidade";
+  if (value >= 0.25) return "Qualidade intermediária";
+  return "Baixa qualidade";
+};
+
 const SPECIES = [
   { key: "earthworm", label: "Minhoca" },
   { key: "ant", label: "Formiga" },
@@ -331,6 +338,28 @@ export default function Dashboard() {
               </text>
             </RadialBarChart>
           </ResponsiveContainer>
+          <div
+            style={{
+              marginTop: 16,
+              textAlign: "center",
+            }}
+          >
+            <strong>{getIGSSLabel(averageIQMS)}</strong>
+
+            <p style={{ marginTop: 8, color: "#6b7280" }}>
+              {averageIQMS >= 0.75 && "IGSS entre 0,75 e 1,00"}
+
+              {averageIQMS >= 0.5 &&
+                averageIQMS < 0.75 &&
+                "IGSS entre 0,50 e 0,74"}
+
+              {averageIQMS >= 0.25 &&
+                averageIQMS < 0.5 &&
+                "IGSS entre 0,25 e 0,49"}
+
+              {averageIQMS < 0.25 && "IGSS entre 0,00 e 0,24"}
+            </p>
+          </div>
         </div>
         <div
           style={{

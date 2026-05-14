@@ -527,7 +527,14 @@ export default function SampleForm({ initialData, onClose, onSaved }) {
                   <input
                     type="number"
                     value={s[f.key]}
-                    onChange={(e) => handleChange(i, f.key, e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      handleChange(
+                        i,
+                        f.key,
+                        value === "" ? "" : parseInt(value, 10),
+                      );
+                    }}
                   />
                 </CardSample>
               ))}
